@@ -12,21 +12,7 @@ function App() {
     function handleInput(event) {
         event.preventDefault();
         setInput(event.target.value);
-        // console.log(event.target.value);
-
     }
-
-    useEffect(() => {
-        console.log(`useEffect triggered: ${input}`)
-        // marked.parse(input, {async: true}).then((data) => {
-        //     setOutput(data)
-        // }, (data) => {
-        //     console.error(`err: ${data}`)
-        // });
-        setOutput(input);
-
-        // console.log(`output: ${output}`)
-    }, [input]);
 
   return (
     <div className="App">
@@ -35,7 +21,7 @@ function App() {
       </header>
       <main>
         < Editor handleInput={handleInput} inputVal={input} initialState={INITIAL_STATE}/>
-        < Preview output={output}/>
+        < Preview output={input}/>
       </main>
     </div>
   );
