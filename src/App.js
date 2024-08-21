@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import {useEffect, useState} from "react";
+import INITIAL_STATE from "./initialState";
+
 import './App.css';
+import Editor from "./Editor"
+import Preview from "./Preview"
 
 function App() {
+    const [input, setInput] = useState(INITIAL_STATE);
+    const [output, setOutput] = useState(INITIAL_STATE);
+
+    function handleInput(event) {
+        event.preventDefault();
+        setInput(event.target.value);
+    }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Markdown Previewer</h1>
       </header>
+      <main>
+        < Editor handleInput={handleInput} inputVal={input} initialState={INITIAL_STATE}/>
+        < Preview output={input}/>
+      </main>
     </div>
   );
 }
